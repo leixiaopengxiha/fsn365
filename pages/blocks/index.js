@@ -1,71 +1,126 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useEffect } from "react";
+import Nav from "../nav";
+import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
+import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import Nav from "../nav";
 import "./blocks.less";
-// import TablePagination from "@material-ui/core/TablePagination";
+import { blocksList } from "../../api/blocks.js";
+import dayjs from "dayjs"; // 处理时间
+import "dayjs/locale/zh-cn"; // 实时动态转换（简体中文）
+import relativeTime from "dayjs/plugin/relativeTime"; // 加载插件
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-});
+dayjs.extend(relativeTime); // 使用插件
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
+const columns = [
+  { id: "height", label: "Block", minWidth: 100, color: "#3499db" },
+  { id: "timestamp", label: "Age", minWidth: 100 },
+  { id: "miner", label: "Miner", minWidth: 170, color: "#3499db" },
+  { id: "txns", label: "Txn", minWidth: 100, color: "#3499db" },
+  { id: "reward", label: "Reward", minWidth: 170 },
 ];
 
-export default function SimpleTable() {
-  const classes = useStyles();
+function createData(block, age, miner, txn, reward) {
+  return { block, age, miner, txn, reward };
+}
+
+export default function Blocks() {
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rows, setRows] = React.useState([]);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
+  useEffect(() => {
+    // 获取数据
+    const fetchData = async () => {
+      const result = await blocksList();
+      setRows(result.data.data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div>
       <Nav />
-
       <div className="main">
         <div className="table-box">
-          <h3>Blocks</h3>
-          <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell align="center">Block</TableCell>
-                  <TableCell align="center">Age</TableCell>
-                  <TableCell align="center">Miner</TableCell>
-                  <TableCell align="center">Txn</TableCell>
-                  <TableCell align="center">Reward</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row) => (
-                  <TableRow key={row.name}>
-                    <TableCell align="center" component="th" scope="row">
-                      {row.name}
-                    </TableCell>
-                    <TableCell align="center">{row.calories}</TableCell>
-                    <TableCell align="center">{row.fat}</TableCell>
-                    <TableCell align="center">{row.carbs}</TableCell>
-                    <TableCell align="center">{row.protein}</TableCell>
-                    <TableCell align="center"></TableCell>
+          <h3 style={{ padding: "10px" }}>Blocks</h3>
+          <Paper className="root">
+            <TableContainer className="container">
+              <Table stickyHeader aria-label="sticky table">
+                <TableHead>
+                  <TableRow>
+                    {columns.map((column) => (
+                      <TableCell
+                        key={column.id}
+                        align="center"
+                        style={{ minWidth: column.minWidth }}
+                      >
+                        {column.label}
+                      </TableCell>
+                    ))}
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                </TableHead>
+                <TableBody>
+                  {rows
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map((row, index) => {
+                      return (
+                        <TableRow
+                          hover
+                          role="checkbox"
+                          tabIndex={-1}
+                          key={index}
+                        >
+                          {columns.map((column) => {
+                            let value;
+                            if (column.id == "timestamp") {
+                              value = dayjs(row[column.id]).format(
+                                "YYYY-MM-DD HH:mm"
+                              );
+                            } else {
+                              value = row[column.id];
+                            }
+                            return (
+                              <TableCell
+                                key={column.id}
+                                align="center"
+                                style={{ color: column.color }}
+                              >
+                                {column.id == "reward"
+                                  ? `${row[column.id]} FSN`
+                                  : value}
+                              </TableCell>
+                            );
+                          })}
+                        </TableRow>
+                      );
+                    })}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <TablePagination
+              rowsPerPageOptions={[10, 25, 100]}
+              component="div"
+              count={rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onChangePage={handleChangePage}
+              onChangeRowsPerPage={handleChangeRowsPerPage}
+            />
+          </Paper>
         </div>
       </div>
     </div>

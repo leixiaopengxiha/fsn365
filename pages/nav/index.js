@@ -1,21 +1,35 @@
 // 导航
-import React from "react";
+import React, { useState } from "react";
 import "./nav.less";
 import Link from "next/link";
-// import Router from "next/router";
-
-// Router.beforePopState(({ url, as, options }) => {
-//   console.log(as);
-//   // I only want to allow these two routes!
-//   // if (as !== "/" || as !== "/other") {
-//   //   // Have SSR render bad routes as a 404.
-//   //   window.location.href = as;
-//   //   return false;
-//   // }
-//   // return true;
-// });
 
 function index() {
+  const [menuisShow, setmenuisShow] = useState(false);
+  const [text, setText] = useState("All Filters");
+  const [search, setSearch] = useState("");
+
+  const setmenuShow = (e, a) => {
+    e.nativeEvent.stopImmediatePropagation();
+    e.stopPropagation();
+    setmenuisShow(a);
+  };
+
+  const setTexts = (a) => {
+    setText(a);
+    setmenuisShow(false);
+  };
+
+  const setSearchHandle = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const onsubmitHandle = () => {
+    if (search !== "") {
+      console.log(search);
+    }
+    console.log(text);
+  };
+
   return (
     <div className="nav-contiar">
       <div className="nav-box">
@@ -37,25 +51,54 @@ function index() {
           <span>FSN365</span>
         </h1>
         <div className="nav-link">
-          <Link href="/">
-            <a>Home</a>
-          </Link>
-          <Link href="/blocks">
-            <a>Blocks</a>
-          </Link>
-          <Link href="/transactions">
-            <a>Transactions</a>
-          </Link>
-          <Link href="/address">
-            <a>Address</a>
-          </Link>
-          <Link href="/staking">
-            <a>Staking</a>
-          </Link>
+          {/* 菜单搜索 */}
+          <div className="nav-menubox">
+            <button className="nav-btn" onClick={(e) => setmenuShow(e, true)}>
+              {`${text}`}
+            </button>
+            <div
+              className={
+                menuisShow ? "nav-show-box nav-show" : "nav-show-box nav-onshow"
+              }
+            >
+              <div onClick={() => setTexts("All Filters")}>All Filters</div>
+              <div onClick={() => setTexts("Asset")}>Asset</div>
+              <div onClick={() => setTexts("Address")}>Address</div>
+              <div onClick={() => setTexts("Transactions")}>Transactions</div>
+            </div>
+            <input
+              type="text"
+              className="nav-input"
+              placeholder="Search by Address/Tx Hash/Asset"
+              value={`${search}`}
+              onChange={(e) => setSearchHandle(e)}
+            />
+            <div className="nav-search" onClick={() => onsubmitHandle()}>
+              🔍
+            </div>
+          </div>
 
-          <Link href="/assets">
-            <a>Assets</a>
-          </Link>
+          {/* 导航链接 */}
+          <div className="nav-linkbox">
+            <Link href="/">
+              <a>Home</a>
+            </Link>
+            <Link href="/blocks">
+              <a>Blocks</a>
+            </Link>
+            <Link href="/transactions">
+              <a>Transactions</a>
+            </Link>
+            <Link href="/address">
+              <a>Address</a>
+            </Link>
+            <Link href="/staking">
+              <a>Staking</a>
+            </Link>
+            <Link href="/assets">
+              <a>Assets</a>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
