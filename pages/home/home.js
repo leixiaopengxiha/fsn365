@@ -1,9 +1,11 @@
+// 首页
 import React from 'react'
 import './home.less'
 
 const index = () => {
     const [btnshow, setBtnshow] = React.useState(false);
     const [seltext, setSeltext] = React.useState('All Filters');
+    const [iputvalue, setIputvalue] = React.useState('');
 
     const setShow = (e, a) => {
         e.nativeEvent.stopImmediatePropagation()
@@ -13,6 +15,12 @@ const index = () => {
     const setSetexts = (a) => {
         setSeltext(a)
         setBtnshow(false)
+    }
+    const onInputvalue = ({ target }) => {
+        setIputvalue(target.value)
+    }
+    const onSubmit = () => {
+        console.log(seltext, iputvalue)
     }
     return (
         <div>
@@ -31,8 +39,8 @@ const index = () => {
                             </div>
                         </div>
                         <div className='home-input'>
-                            <input type="text" />
-                            <div>🔍</div>
+                            <input type="text" onChange={(e) => onInputvalue(e)} value={iputvalue} />
+                            <div onClick={onSubmit}>🔍</div>
                         </div>
 
                     </div>
