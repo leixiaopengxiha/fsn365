@@ -140,9 +140,9 @@ export default function index() {
                     <Table aria-label="custom pagination table">
                         <TableHead>
                             <TableRow>
-                                <TableCell><strong className='sum'>Asset</strong></TableCell>
-                                <TableCell><strong className='sum'>Asset ID</strong></TableCell>
-                                <TableCell><strong className='sum'>Quantity</strong></TableCell>
+                                <TableCell align="center"><strong className='sum'>Asset</strong></TableCell>
+                                <TableCell align="center"><strong className='sum'>Asset ID</strong></TableCell>
+                                <TableCell align="center"><strong className='sum'>Quantity</strong></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -151,13 +151,13 @@ export default function index() {
                                 : rows
                             ).map((row) => (
                                 <TableRow key={row.name}>
-                                    <TableCell component="th" scope="row">
-                                        {row.name}
+                                    <TableCell component="th" scope="row" align="center">
+                                        <a>{row.name}</a>
                                     </TableCell>
-                                    <TableCell>
-                                        {row.calories}
+                                    <TableCell align="center">
+                                        <a>{row.calories}</a>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell align="center">
                                         {row.fat}
                                     </TableCell>
                                 </TableRow>
