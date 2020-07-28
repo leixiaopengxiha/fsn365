@@ -22,7 +22,6 @@ function index() {
                     <Link href='/blocks'>
                         <a>
                             Blocks
-                            Blocks
                         </a>
                     </Link>
                     <Link href='/transactions'>

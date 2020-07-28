@@ -30,12 +30,23 @@
   margin: 0;
   padding: 0;
 }
+<<<<<<< HEAD
+=======
+li {
+  list-style: none;
+}
+>>>>>>> lxp
 a {
   text-decoration: none;
 }
 .home-contiar {
   width: 100%;
+<<<<<<< HEAD
   background: #999f9f;
+=======
+  min-height: 100vh;
+  background: #f8f9fa;
+>>>>>>> lxp
 }
 
 .home-box {
@@ -107,3 +118,113 @@ a {
   text-align: center;
 }
 
+<<<<<<< HEAD
+=======
+.homelist-box {
+  width: 86%;
+  margin: 0px auto;
+  background: white;
+  padding: 10px 0;
+}
+.homelist-box .homelist-top {
+  display: flex;
+  flex-wrap: wrap;
+}
+.homelist-box .homelist-top li {
+  width: 23.3%;
+  box-sizing: border-box;
+  margin: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #b1b3b4d7;
+}
+.homelist-box .homelist-top li h4 {
+  margin: 5px 0;
+}
+
+.homelsit-contenr {
+  width: 86%;
+  margin: 0px auto;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 80px;
+}
+.homelsit-contenr .con-left,
+.homelsit-contenr .con-right {
+  width: 48%;
+  background: white;
+  border: 1px solid #b1b3b4d7;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 3px;
+}
+.homelsit-contenr .con-left a,
+.homelsit-contenr .con-right a {
+  color: #3498db;
+  display: block;
+  max-width: 170px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.homelsit-contenr .con-left .con-top,
+.homelsit-contenr .con-right .con-top {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #b1b3b4d7;
+  padding: 10px 0;
+}
+.homelsit-contenr .con-left .con-content .con-item,
+.homelsit-contenr .con-right .con-content .con-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #b1b3b4d7;
+  padding: 10px 0;
+  font-size: 15px;
+}
+.homelsit-contenr .con-left .con-content .con-item .item-letf,
+.homelsit-contenr .con-right .con-content .con-item .item-letf {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.homelsit-contenr .con-left .con-content .con-item .item-letf .txn,
+.homelsit-contenr .con-right .con-content .con-item .item-letf .txn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #e7eaf3;
+  text-align: center;
+  line-height: 50px;
+  margin-right: 10px;
+}
+.homelsit-contenr .con-left .con-content .con-item .item-letf .block,
+.homelsit-contenr .con-right .con-content .con-item .item-letf .block {
+  width: 50px;
+  height: 50px;
+  border-radius: 5;
+  background-color: #e7eaf3;
+  text-align: center;
+  line-height: 50px;
+  margin-right: 10px;
+}
+.homelsit-contenr .con-left .con-content .con-item .item-letf a,
+.homelsit-contenr .con-right .con-content .con-item .item-letf a {
+  color: #3498db;
+}
+.homelsit-contenr .con-left .con-content .con-item .item-right,
+.homelsit-contenr .con-right .con-content .con-item .item-right {
+  flex: 1;
+}
+.homelsit-contenr .con-left .con-content .con-item .item-right div,
+.homelsit-contenr .con-right .con-content .con-item .item-right div {
+  display: flex;
+}
+.homelsit-contenr .con-left .con-content .con-item .item-right div p,
+.homelsit-contenr .con-right .con-content .con-item .item-right div p {
+  margin-right: 10px;
+}
+
+>>>>>>> lxp
