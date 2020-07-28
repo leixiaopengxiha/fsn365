@@ -2,7 +2,6 @@
 import React from 'react'
 import './nav.less'
 import Link from 'next/link'
-
 function index() {
     return (
         <div className='nav-contiar'>
@@ -21,7 +20,6 @@ function index() {
                     </Link>
                     <Link href='/blocks'>
                         <a>
-                            Blocks
                             Blocks
                         </a>
                     </Link>
