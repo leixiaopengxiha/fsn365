@@ -175,7 +175,7 @@ a {
   flex-wrap: wrap;
 }
 .homelist-box .homelist-top li {
-  width: 23.3%;
+  width: 23%;
   box-sizing: border-box;
   margin: 10px;
   padding-bottom: 10px;
@@ -275,7 +275,7 @@ a {
   background-color: #f8f9fa;
 }
 .main .table-box {
-  width: 1280px;
+  width: 86%;
   height: 596px;
   margin: 0 auto;
 }

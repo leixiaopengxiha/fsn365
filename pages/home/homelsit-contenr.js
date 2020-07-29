@@ -8,9 +8,12 @@ function HomelsitContenr() {
 
     const [leftdata, setLeftdata] = React.useState([]);
     const [rightdata, setRightdata] = React.useState([]);
+    const [datetime, setDatetime] = React.useState(null);
     useEffect(() => {
         const listData = async () => {
             const result = await getLatest()
+            console.log(result);
+
             if (result.data === undefined) {
                 listData()
                 return
@@ -24,9 +27,13 @@ function HomelsitContenr() {
             setRightdata([])
         }, 30000);
         listData()
+
+        const times = new Date().getTime()
+        setDatetime(times)
         return () => {
             clearInterval(tiems)
         }
+
 
     }, [])
     return (
@@ -51,7 +58,7 @@ function HomelsitContenr() {
                                     <div className='txn'>Txn</div>
                                     <div>
                                         <a>{`${data.hash}`}</a>
-                                        <p>1 day ago</p>
+                                        <p>{`${Math.ceil((datetime - (data.timestamp * 1000)) / (60 * 60 * 24 * 1000))}`} day ago</p>
 
                                     </div>
                                 </div>
@@ -98,8 +105,7 @@ function HomelsitContenr() {
                                     <div className='block'>BK</div>
                                     <div>
                                         <a>{`${data.height}`}</a>
-                                        <p>1 day ago</p>
-
+                                        <p>{`${Math.ceil((datetime - (data.timestamp * 1000)) / (60 * 60 * 24 * 1000))}`} day ago</p>
                                     </div>
                                 </div>
                                 <div className='item-right'>
