@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Link from 'next/link'
 import './homelsit-contenr.less'
-import { getLatest } from '../api/home'
+import { getLatest } from '../../api'
 
 
 function HomelsitContenr() {
@@ -11,6 +11,10 @@ function HomelsitContenr() {
     useEffect(() => {
         const listData = async () => {
             const result = await getLatest()
+            if (!result.ok) {
+                listData()
+                return
+            }
             setLeftdata(result.data.txs)
             setRightdata(result.data.bks)
         }
@@ -18,7 +22,7 @@ function HomelsitContenr() {
             listData()
             setLeftdata([])
             setRightdata([])
-        }, 20000);
+        }, 30000);
         listData()
 
     }, [])

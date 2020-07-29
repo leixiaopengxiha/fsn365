@@ -271,3 +271,18 @@ a {
   margin-right: 10px;
 }
 
+.main {
+  background-color: #f8f9fa;
+}
+.main .table-box {
+  width: 1280px;
+  height: 596px;
+  margin: 0 auto;
+}
+.main .table-box .root {
+  width: "100%";
+}
+.main .table-box .root .container {
+  max-height: 440;
+}
+

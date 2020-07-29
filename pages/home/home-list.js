@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import './homelist.less'
-import { getStats } from '../api/home'
+import { getStats } from '../../api'
 const homeList = () => {
     const [data, setData] = useState(null)
     useEffect(() => {
         const fetchData = async () => {
             const result = await getStats()
+            if (!result.ok) {
+                fetchData()
+                return
+            }
             setData(result.data)
         };
         setInterval(() => {
             fetchData()
             setData(null)
-        }, 20000);
+        }, 30000);
         fetchData();
     }, []);
     return (

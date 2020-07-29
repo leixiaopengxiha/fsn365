@@ -9,12 +9,12 @@ import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import "./blocks.less";
-import { blocksList } from "../../api/blocks.js";
-import dayjs from "dayjs"; // 处理时间
-import "dayjs/locale/zh-cn"; // 实时动态转换（简体中文）
-import relativeTime from "dayjs/plugin/relativeTime"; // 加载插件
+import { getBlocks } from "../../api";
+// import dayjs from "dayjs"; // 处理时间
+// import "dayjs/locale/zh-cn"; // 实时动态转换（简体中文）
+// import relativeTime from "dayjs/plugin/relativeTime"; // 加载插件
 
-dayjs.extend(relativeTime); // 使用插件
+// dayjs.extend(relativeTime); // 使用插件
 
 const columns = [
   { id: "height", label: "Block", minWidth: 100, color: "#3499db" },
@@ -45,7 +45,11 @@ export default function Blocks() {
   useEffect(() => {
     // 获取数据
     const fetchData = async () => {
-      const result = await blocksList();
+      const result = await getBlocks();
+      if (result.data.data === undefined) {
+        fetchData()
+        return
+      }
       setRows(result.data.data);
     };
     fetchData();
@@ -86,13 +90,13 @@ export default function Blocks() {
                         >
                           {columns.map((column) => {
                             let value;
-                            if (column.id == "timestamp") {
-                              value = dayjs(row[column.id]).format(
-                                "YYYY-MM-DD HH:mm"
-                              );
-                            } else {
-                              value = row[column.id];
-                            }
+                            // if (column.id == "timestamp") {
+                            //   value = dayjs(row[column.id]).format(
+                            //     "YYYY-MM-DD HH:mm"
+                            //   );
+                            // } else {
+                            value = row[column.id];
+                            // }
                             return (
                               <TableCell
                                 key={column.id}
