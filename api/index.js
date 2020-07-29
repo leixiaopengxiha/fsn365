@@ -48,30 +48,14 @@ export let getBlocks = () => {
 
 }
 
-// 
-
-
-export let addressList = () => {
+// 获取Assets 数据
+export let getAssets = () => {
     return axios({
         method: 'get',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
         },
-        url: '/address',
-    })
-
-}
-
-// transactionsList
-
-
-export let transactionsList = () => {
-    return axios({
-        method: 'get',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        },
-        url: '/txn',
+        url: '/assets',
     })
 
 }

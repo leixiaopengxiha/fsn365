@@ -26,13 +26,7 @@
     "/_polyfills": [
       "static/runtime/polyfills.js"
     ],
-    "/address": [
-      "static/runtime/webpack.js",
-      "static/css/styles.chunk.css",
-      "static/chunks/styles.js",
-      "static/runtime/main.js"
-    ],
-    "/blocks": [
+    "/assets": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
@@ -44,11 +38,7 @@
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
-    "/next/dist/pages/_error": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/transactions": [
+    "/staking": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
