@@ -10,6 +10,8 @@ import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import "./blocks.less";
 import { getBlocks } from "../../api";
+import Bottom from "../bottom";
+
 // import dayjs from "dayjs"; // 处理时间
 // import "dayjs/locale/zh-cn"; // 实时动态转换（简体中文）
 // import relativeTime from "dayjs/plugin/relativeTime"; // 加载插件
@@ -127,6 +129,7 @@ export default function Blocks() {
           </Paper>
         </div>
       </div>
+      <Bottom></Bottom>
     </div>
   );
 }

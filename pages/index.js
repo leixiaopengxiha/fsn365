@@ -4,6 +4,9 @@ import './styles.less'
 import Home from './home/home'
 import HomeList from './home/home-list'
 import HomelsitContenr from './home/homelsit-contenr'
+import Bottom from './bottom'
+
+
 const index = () => {
     return (
         <div>
@@ -13,6 +16,7 @@ const index = () => {
                 <HomeList></HomeList>
                 <HomelsitContenr></HomelsitContenr>
             </div>
+            <Bottom></Bottom>
         </div>
     )
 }
