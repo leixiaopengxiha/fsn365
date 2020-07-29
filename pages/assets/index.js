@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Nav from '../nav'
 import './assets.less'
-
+import { getAssets } from '../../api'
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -19,15 +19,13 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 
-const useStyles1 = makeStyles((theme) => ({
-    root: {
-        flexShrink: 0,
-        marginLeft: theme.spacing(2.5),
-    },
-}));
+const columns = [
+    { id: "name", label: "Asset", minWidth: 100, color: "#3499db" },
+    { id: "id", label: "Asset ID", minWidth: 100, color: "#3499db" },
+    { id: "quantity", label: "Quantity", minWidth: 170 },
+];
 
 function TablePaginationActions(props) {
-    const classes = useStyles1();
     const theme = useTheme();
     const { count, page, rowsPerPage, onChangePage } = props;
 
@@ -84,38 +82,14 @@ TablePaginationActions.propTypes = {
     rowsPerPage: PropTypes.number.isRequired,
 };
 
-function createData(name, calories, fat) {
-    return { name, calories, fat };
+function createData(asset, assetId, quantity) {
+    return { asset, assetId, quantity };
 }
 
-const rows = [
-    createData('Cupcake', 305, 3.7),
-    createData('Donut', 452, 25.0),
-    createData('Eclair', 262, 16.0),
-    createData('Frozen yoghurt', 159, 6.0),
-    createData('Gingerbread', 356, 16.0),
-    createData('Honeycomb', 408, 3.2),
-    createData('Ice cream sandwich', 237, 9.0),
-    createData('Jelly Bean', 375, 0.0),
-    createData('KitKat', 518, 26.0),
-    createData('Lollipop', 392, 0.2),
-    createData('Marshmallow', 318, 0),
-    createData('Nougat', 360, 19.0),
-    createData('Oreo', 437, 18.0),
-].sort((a, b) => (a.calories < b.calories ? -1 : 1));
-
-const useStyles2 = makeStyles({
-    table: {
-        minWidth: 500,
-    },
-});
-
-
 export default function index() {
-    const classes = useStyles2();
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
+    const [rows, setRows] = React.useState([]);
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
     const handleChangePage = (event, newPage) => {
@@ -126,69 +100,94 @@ export default function index() {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
-
+    const [data, setData] = useState(null)
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await getAssets()
+            if (result.data.data === undefined) {
+                fetchData()
+                return
+            }
+            setRows(result.data.data)
+            console.log(result.data.data)
+        };
+        fetchData();
+    }, []);
     return (
         <div>
             <div className='home-contiar'>
                 <Nav></Nav>
-            </div>
-            <div className='assets'>
-                <header>
-                    <h2>Assets</h2>
-                </header>
-                <TableContainer component={Paper} className='assets-table'>
-                    <Table aria-label="custom pagination table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell align="center"><strong className='sum'>Asset</strong></TableCell>
-                                <TableCell align="center"><strong className='sum'>Asset ID</strong></TableCell>
-                                <TableCell align="center"><strong className='sum'>Quantity</strong></TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {(rowsPerPage > 0
-                                ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                : rows
-                            ).map((row) => (
-                                <TableRow key={row.name}>
-                                    <TableCell component="th" scope="row" align="center">
-                                        <a>{row.name}</a>
-                                    </TableCell>
-                                    <TableCell align="center">
-                                        <a>{row.calories}</a>
-                                    </TableCell>
-                                    <TableCell align="center">
-                                        {row.fat}
-                                    </TableCell>
+                <div className='assets'>
+                    <header>
+                        <h2>Assets</h2>
+                    </header>
+                    <TableContainer component={Paper} className='assets-table'>
+                        <Table aria-label="custom pagination table">
+                            <TableHead>
+                                <TableRow>
+                                    {columns.map((column) => (
+                                        <TableCell
+                                            key={column.id}
+                                            align="center"
+                                            style={{ minWidth: column.minWidth }}
+                                        >
+                                            {column.label}
+                                        </TableCell>
+                                    ))}
                                 </TableRow>
-                            ))}
+                            </TableHead>
+                            <TableBody>
+                                {rows
+                                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    .map((row, index) => {
 
-                            {emptyRows > 0 && (
-                                <TableRow style={{ height: 53 * emptyRows }}>
-                                    <TableCell colSpan={6} />
+                                        return (
+                                            <TableRow
+                                                hover
+                                                role="checkbox"
+                                                tabIndex={-1}
+                                                key={index}
+                                            >
+                                                {columns.map((column) => {
+                                                    let value;
+                                                    value = row[column.id];
+                                                    return (
+                                                        <TableCell
+                                                            key={column.id}
+                                                            align="center"
+                                                            style={{ color: column.color }}
+                                                        >
+                                                            {column.id == "quantity"
+                                                                ? `${row[column.id]} ${row.symbol}  `
+                                                                : value}
+                                                        </TableCell>
+                                                    );
+                                                })}
+                                            </TableRow>
+                                        );
+                                    })}
+                            </TableBody>
+                            <TableFooter>
+                                <TableRow>
+                                    <TablePagination
+                                        rowsPerPageOptions={[5, 10, 25, 50, 100]}
+                                        colSpan={3}
+                                        count={rows.length}
+                                        rowsPerPage={rowsPerPage}
+                                        page={page}
+                                        SelectProps={{
+                                            inputProps: { 'aria-label': 'rows per page' },
+                                            native: true,
+                                        }}
+                                        onChangePage={handleChangePage}
+                                        onChangeRowsPerPage={handleChangeRowsPerPage}
+                                        ActionsComponent={TablePaginationActions}
+                                    />
                                 </TableRow>
-                            )}
-                        </TableBody>
-                        <TableFooter>
-                            <TableRow>
-                                <TablePagination
-                                    rowsPerPageOptions={[5, 10, 25, 50, 100]}
-                                    colSpan={3}
-                                    count={rows.length}
-                                    rowsPerPage={rowsPerPage}
-                                    page={page}
-                                    SelectProps={{
-                                        inputProps: { 'aria-label': 'rows per page' },
-                                        native: true,
-                                    }}
-                                    onChangePage={handleChangePage}
-                                    onChangeRowsPerPage={handleChangeRowsPerPage}
-                                    ActionsComponent={TablePaginationActions}
-                                />
-                            </TableRow>
-                        </TableFooter>
-                    </Table>
-                </TableContainer>
+                            </TableFooter>
+                        </Table>
+                    </TableContainer>
+                </div>
             </div>
         </div>
     )
