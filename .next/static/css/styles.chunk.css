@@ -79,44 +79,20 @@
   color: #3498db;
 }
 
-<<<<<<< HEAD
-.main {
-  background-color: #f8f9fa;
-}
-.main .table-box {
-  width: 1280px;
-  height: 596px;
-  margin: 0 auto;
-}
-.main .table-box .root {
-  width: "100%";
-}
-.main .table-box .root .container {
-  max-height: 440;
-}
-
-=======
 * {
   margin: 0;
   padding: 0;
 }
-<<<<<<< HEAD
-=======
 li {
   list-style: none;
 }
->>>>>>> lxp
 a {
   text-decoration: none;
 }
 .home-contiar {
   width: 100%;
-<<<<<<< HEAD
-  background: #999f9f;
-=======
   min-height: 100vh;
   background: #f8f9fa;
->>>>>>> lxp
 }
 
 .home-box {
@@ -188,8 +164,6 @@ a {
   text-align: center;
 }
 
-<<<<<<< HEAD
-=======
 .homelist-box {
   width: 86%;
   margin: 0px auto;
@@ -297,5 +271,3 @@ a {
   margin-right: 10px;
 }
 
->>>>>>> lxp
->>>>>>> d21d7a91b91b631cc91f71f3940557e71a0dda26
