@@ -7,17 +7,21 @@ const homeList = () => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await getStats()
-            if (!result.ok) {
+            if (result.data === undefined) {
                 fetchData()
                 return
             }
             setData(result.data)
         };
-        setInterval(() => {
+        let tiems = setInterval(() => {
             fetchData()
             setData(null)
         }, 30000);
+
         fetchData();
+        return () => {
+            clearInterval(tiems)
+        }
     }, []);
     return (
         <div className='homelist-box'>

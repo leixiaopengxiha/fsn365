@@ -11,19 +11,22 @@ function HomelsitContenr() {
     useEffect(() => {
         const listData = async () => {
             const result = await getLatest()
-            if (!result.ok) {
+            if (result.data === undefined) {
                 listData()
                 return
             }
             setLeftdata(result.data.txs)
             setRightdata(result.data.bks)
         }
-        setInterval(() => {
+        let tiems = setInterval(() => {
             listData()
             setLeftdata([])
             setRightdata([])
         }, 30000);
         listData()
+        return () => {
+            clearInterval(tiems)
+        }
 
     }, [])
     return (
