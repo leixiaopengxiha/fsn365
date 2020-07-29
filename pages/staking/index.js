@@ -21,47 +21,47 @@ export default function index() {
         <div>
             <div className='home-contiar'>
                 <Nav></Nav>
-            </div>
-            <div className='staking'>
-                <header>
-                    <h2>Fusion Staking</h2>
-                </header>
-                <TableContainer component={Paper} className='staking-table'>
-                    <Table aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>
-                                    <strong className='sum'>Summary</strong>
-                                </TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableHead>
-                            {rows.map((row) => (
-                                <TableRow key={row.tickets}>
-                                    <TableCell>Tickets:{row.tickets}</TableCell>
-                                    <TableCell>Online Miners:{row.onlineMiners}</TableCell>
+                <div className='staking'>
+                    <header>
+                        <h2>Fusion Staking</h2>
+                    </header>
+                    <TableContainer component={Paper} className='staking-table'>
+                        <Table aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>
+                                        <strong className='sum'>Summary</strong>
+                                    </TableCell>
                                 </TableRow>
-                            ))}
-                            {rows.map((row) => (
-                                <TableRow key={row.historicalMiners}>
-                                    <TableCell>Historical Miners:{row.historicalMiners}</TableCell>
-                                    <TableCell>Block Rewards:{row.blockRewards}</TableCell>
+                            </TableHead>
+                            <TableHead>
+                                {rows.map((row) => (
+                                    <TableRow key={row.tickets}>
+                                        <TableCell>Tickets:{row.tickets}</TableCell>
+                                        <TableCell>Online Miners:{row.onlineMiners}</TableCell>
+                                    </TableRow>
+                                ))}
+                                {rows.map((row) => (
+                                    <TableRow key={row.historicalMiners}>
+                                        <TableCell>Historical Miners:{row.historicalMiners}</TableCell>
+                                        <TableCell>Block Rewards:{row.blockRewards}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableHead>
+                        </Table>
+                    </TableContainer>
+                    <TableContainer component={Paper} className='staking-table-1'>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>
+                                        <strong className='sum'>Active Miners Unexpected errro happened.</strong>
+                                    </TableCell>
                                 </TableRow>
-                            ))}
-                        </TableHead>
-                    </Table>
-                </TableContainer>
-                <TableContainer component={Paper} className='staking-table-1'>
-                    <Table>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>
-                                    <strong className='sum'>Active Miners Unexpected errro happened.</strong>
-                                </TableCell>
-                            </TableRow>
-                        </TableHead>
-                    </Table>
-                </TableContainer>
+                            </TableHead>
+                        </Table>
+                    </TableContainer>
+                </div>
             </div>
         </div>
     )
