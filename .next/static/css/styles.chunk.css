@@ -272,6 +272,26 @@ a {
   margin-right: 10px;
 }
 
+.main {
+  background-color: #f8f9fa;
+}
+.main .table-box {
+  width: 86%;
+  min-height: 80vh;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+.main .table-box .root {
+  width: "100%";
+}
+.main .table-box .root .container {
+  max-height: 440;
+}
+.main .table-box .root .container a {
+  text-decoration: none;
+  color: #3499db;
+}
+
 .bottom {
   padding: 0;
   margin: 0;
@@ -346,29 +366,46 @@ a {
   border-radius: 50%;
 }
 
-.assets {
+.tx-box {
   width: 100%;
-  background: #E7EAF3;
+  background: #f8f9fa;
 }
-header {
-  width: 87%;
+.tx-box .tx-content {
+  width: 86%;
+  min-height: 68vh;
   margin: 0 auto;
+  padding: 20px 0;
 }
-.assets-table {
-  width: 87% !important;
-  margin: 0 auto;
+.tx-box .tx-content .tx-title {
+  display: flex;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
 }
-.assets-table .sum {
-  font-size: 15px;
+.tx-box .tx-content .tx-title .sss {
+  margin-left: 10px;
+  font-size: 17px;
 }
-.btn {
-  height: 23px;
-  width: 143px;
+.tx-box .tx-content .tx-con {
+  width: 100%;
+  min-height: 40vh;
+  margin-top: 20px;
+  background: white;
+  border-radius: 5px;
+  padding: 20px;
 }
-.btn button {
-  padding: 0;
+.tx-box .tx-content .tx-con .tx-b div {
+  line-height: 50px;
+  border-bottom: 1px solid #d2d3d4;
+  font-size: 14px;
 }
-a {
+.tx-box .tx-content .success {
+  color: green;
+}
+.tx-box .tx-content .errer {
+  color: red;
+}
+.tx-box .tx-content a {
   color: #3498db;
 }
 

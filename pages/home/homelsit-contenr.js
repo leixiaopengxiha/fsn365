@@ -12,8 +12,6 @@ function HomelsitContenr() {
     useEffect(() => {
         const listData = async () => {
             const result = await getLatest()
-            console.log(result);
-
             if (result.data === undefined) {
                 listData()
                 return
@@ -42,7 +40,7 @@ function HomelsitContenr() {
                 <div className='con-top'>
                     <h4>Latest Txns</h4>
                     <h4 className='yan'>
-                        <Link href='/txns'>
+                        <Link href='/transactions'>
                             <a>
                                 View All
                             </a>
@@ -60,19 +58,23 @@ function HomelsitContenr() {
                                         <Link href={`/tx/${data.hash}`}>
                                             <a>{`${data.hash}`}</a>
                                         </Link>
-                                        <p>{`${Math.ceil((datetime - (data.timestamp * 1000)) / (60 * 60 * 24 * 1000))}`} day ago</p>
+                                        <p>{`${Math.round((datetime - (data.timestamp * 1000)) / (60 * 60 * 24 * 1000))}`} day ago</p>
 
                                     </div>
                                 </div>
                                 <div className='item-right'>
                                     <div>
                                         <p>From</p>
-                                        <a>{`${data.from}`}</a>
+                                        <Link href={`/address/${data.from}`}>
+                                            <a>{`${data.from}`}</a>
+                                        </Link>
                                     </div>
 
                                     <div>
                                         <p>To</p>
-                                        <a>{`${data.to}`} </a>
+                                        <Link href={`/address/${data.to}`}>
+                                            <a>{`${data.to}`} </a>
+                                        </Link>
 
                                     </div>
                                 </div>
@@ -106,18 +108,27 @@ function HomelsitContenr() {
                                 <div className='item-letf'>
                                     <div className='block'>BK</div>
                                     <div>
-                                        <a>{`${data.height}`}</a>
-                                        <p>{`${Math.ceil((datetime - (data.timestamp * 1000)) / (60 * 60 * 24 * 1000))}`} day ago</p>
+                                        <Link href={`/blocks/${data.height}`}>
+                                            <a>{`${data.height}`}</a>
+                                        </Link>
+
+                                        <p>{`${Math.round((datetime - (data.timestamp * 1000)) / (60 * 60 * 24 * 1000))}`} day ago</p>
                                     </div>
                                 </div>
                                 <div className='item-right'>
                                     <div>
                                         <p>Miner</p>
-                                        <a>{`${data.miner}`}</a>
+                                        <Link href={`/address/${data.miner}`}>
+                                            <a>{`${data.miner}`}</a>
+
+                                        </Link>
                                     </div>
 
                                     <div>
-                                        <a>{`${data.txns}`}txns </a><p>&nbsp; in block.</p>
+
+                                        <a href={`https://api.fsn365.com/txn?bk=2589472&size=${data.txns}`} target='blank'>{`${data.txns}`}txns </a>
+
+                                        <p>&nbsp; in block.</p>
                                     </div>
                                 </div>
                                 <div>
