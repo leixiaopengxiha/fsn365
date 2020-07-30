@@ -79,6 +79,26 @@
   color: #3498db;
 }
 
+.staking {
+  width: 100%;
+  background: #E7EAF3;
+}
+header {
+  width: 87%;
+  margin: 0 auto;
+}
+.staking-table {
+  width: 87% !important;
+  margin: 20px auto;
+}
+.staking-table .sum {
+  font-size: 20px;
+}
+.staking-table-1 {
+  width: 87% !important;
+  margin: 30px auto;
+}
+
 .bottom {
   padding: 0;
   margin: 0;
@@ -178,51 +198,5 @@
 .container {
   width: 200px;
   min-height: 60vh;
-}
-
-.staking {
-  width: 100%;
-  background: #E7EAF3;
-}
-header {
-  width: 87%;
-  margin: 0 auto;
-}
-.staking-table {
-  width: 87% !important;
-  margin: 20px auto;
-}
-.staking-table .sum {
-  font-size: 20px;
-}
-.staking-table-1 {
-  width: 87% !important;
-  margin: 30px auto;
-}
-
-.assets {
-  width: 100%;
-  background: #E7EAF3;
-}
-header {
-  width: 87%;
-  margin: 0 auto;
-}
-.assets-table {
-  width: 87% !important;
-  margin: 0 auto;
-}
-.assets-table .sum {
-  font-size: 15px;
-}
-.btn {
-  height: 23px;
-  width: 143px;
-}
-.btn button {
-  padding: 0;
-}
-a {
-  color: #3498db;
 }
 
