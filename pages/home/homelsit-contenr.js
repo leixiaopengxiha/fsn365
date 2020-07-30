@@ -57,7 +57,9 @@ function HomelsitContenr() {
                                 <div className='item-letf' >
                                     <div className='txn'>Txn</div>
                                     <div>
-                                        <a>{`${data.hash}`}</a>
+                                        <Link href={`/tx/${data.hash}`}>
+                                            <a>{`${data.hash}`}</a>
+                                        </Link>
                                         <p>{`${Math.ceil((datetime - (data.timestamp * 1000)) / (60 * 60 * 24 * 1000))}`} day ago</p>
 
                                     </div>

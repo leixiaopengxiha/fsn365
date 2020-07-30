@@ -79,22 +79,6 @@
   color: #3498db;
 }
 
-.main {
-  background-color: #f8f9fa;
-}
-.main .table-box {
-  width: 86%;
-  min-height: 80vh;
-  margin: 0 auto;
-  padding-bottom: 50px;
-}
-.main .table-box .root {
-  width: "100%";
-}
-.main .table-box .root .container {
-  max-height: 440;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -361,57 +345,31 @@ a {
   border-radius: 50%;
 }
 
-* {
-  margin: 0;
-  padding: 0;
+.tx-box {
+  width: 100%;
+  background: #f8f9fa;
 }
-.transactionsn-contiar {
-  padding-bottom: 30px;
-  margin: 0;
+.tx-box .tx-content {
+  width: 86%;
   min-height: 80vh;
-  background: #F8F9FA;
+  margin: 0 auto;
+  padding: 20px 0;
 }
-.transactionsn-contiar .maiTransactionsn {
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 20px;
+.tx-box .tx-content .tx-title {
+  display: flex;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
 }
-.transactionsn-contiar .maiTransactionsn .maiTransactionsn-head {
-  font-size: 23px;
+.tx-box .tx-content .tx-title .sss {
+  margin-left: 10px;
+  font-size: 17px;
 }
-.root {
-  width: '100%';
-  min-height: 70vh;
-}
-.container {
-  width: 200px;
-  min-height: 60vh;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-.transactionsn-contiar {
-  padding-bottom: 30px;
-  margin: 0;
-  min-height: 80vh;
-  background: #F8F9FA;
-}
-.transactionsn-contiar .maiTransactionsn {
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 20px;
-}
-.transactionsn-contiar .maiTransactionsn .maiTransactionsn-head {
-  font-size: 23px;
-}
-.root {
-  width: '100%';
-  min-height: 70vh;
-}
-.container {
-  width: 200px;
-  min-height: 60vh;
+.tx-box .tx-content .tx-con {
+  width: 100%;
+  min-height: 65vh;
+  margin-top: 20px;
+  background: white;
+  border-radius: 5px;
 }
 

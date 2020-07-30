@@ -48,9 +48,7 @@ export let getBlocks = () => {
 
 }
 
-// 
-
-
+// addressList
 export let addressList = () => {
     return axios({
         method: 'get',
@@ -63,8 +61,6 @@ export let addressList = () => {
 }
 
 // transactionsList
-
-
 export let transactionsList = () => {
     return axios({
         method: 'get',
@@ -74,4 +70,17 @@ export let transactionsList = () => {
         url: '/txn',
     })
 
+}
+
+// tx
+export let getTx = (data) => {
+    console.log(data);
+    return axios({
+        method: 'get',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        url: `/txn/${data}`,
+
+    })
 }
