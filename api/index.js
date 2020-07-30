@@ -72,6 +72,18 @@ export let transactionsList = () => {
 
 }
 
+// transactionsList
+export let getAssets = () => {
+    return axios({
+        method: 'get',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        url: '/assets',
+    })
+
+}
+
 // tx
 export let getTx = (data) => {
     console.log(data);
