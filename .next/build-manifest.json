@@ -26,19 +26,26 @@
     "/_polyfills": [
       "static/runtime/polyfills.js"
     ],
+<<<<<<< HEAD
     "/assets": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
+=======
+>>>>>>> lxp
     "/index": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
+<<<<<<< HEAD
     "/staking": [
+=======
+    "/tx/[tx]": [
+>>>>>>> lxp
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
