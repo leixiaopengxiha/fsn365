@@ -72,7 +72,7 @@ function index() {
                             </div>
                             <div>
                                 <span> Block：</span>
-                                <Link href={`/block/${txDatas.bk}`}>
+                                <Link href={`/blocks/${txDatas.bk}`}>
                                     <a > {`${txDatas.bk}`}</a>
                                 </Link>
 
