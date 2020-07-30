@@ -13,9 +13,7 @@ function index() {
         a.replace(reg, ($, $1) => {
             utld = a.slice($1 + 1)
         })
-        console.log();
-
-
+        // console.log();
         const txfn = async () => {
             const result = await getTx(utld)
             console.log(result.data);
