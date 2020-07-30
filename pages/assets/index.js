@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
 import Nav from '../nav'
 import './assets.less'
 import { getAssets } from '../../api'
@@ -18,6 +19,7 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import Bottom from "../bottom";
 
 const columns = [
     { id: "name", label: "Asset", minWidth: 100, color: "#3499db" },
@@ -189,6 +191,7 @@ export default function index() {
                     </TableContainer>
                 </div>
             </div>
+            <Bottom></Bottom>
         </div>
     )
 }

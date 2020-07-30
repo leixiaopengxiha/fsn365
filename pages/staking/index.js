@@ -7,13 +7,13 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import Bottom from "../bottom";
 function createData(tickets, onlineMiners, historicalMiners, blockRewards) {
     return { tickets, onlineMiners, historicalMiners, blockRewards };
 }
 
 const rows = [
-    createData('1', '2', '3', 'FSN')
+    createData('', '', '393', '6473680 FSN')
 ];
 
 export default function index() {
@@ -63,6 +63,7 @@ export default function index() {
                     </TableContainer>
                 </div>
             </div>
+            <Bottom></Bottom>
         </div>
     )
 }
