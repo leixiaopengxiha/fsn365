@@ -11,6 +11,7 @@ import TableRow from "@material-ui/core/TableRow";
 import "./blocks.less";
 import { getBlocks } from "../../api";
 import Link from "next/link";
+import Bottom from "../bottom/index";
 
 export default function Blocks() {
   const [page, setPage] = React.useState(0);

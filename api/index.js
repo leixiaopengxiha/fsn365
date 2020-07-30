@@ -38,72 +38,57 @@ export let getLatest = () => {
 
 // 获取Blocks 数据
 export let getBlocks = () => {
-<<<<<<< HEAD
-    return axios({
-        method: 'get',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        },
-        url: '/blocks',
-    })
-
-}
-
-// addressList
-export let addressList = () => {
-    return axios({
-        method: 'get',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        },
-        url: '/assets',
-    })
-
-}
-
-// transactionsList
-export let transactionsList = () => {
-    return axios({
-        method: 'get',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        },
-        url: '/txn',
-    })
-
-}
-
-// transactionsList
-export let getAssets = () => {
-    return axios({
-        method: 'get',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        },
-        url: '/assets',
-    })
-
-}
-
-// tx
-export let getTx = (data) => {
-    console.log(data);
-    return axios({
-        method: 'get',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        },
-        url: `/txn/${data}`,
-
-    })
-}
-=======
   return axios({
     method: "get",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
     },
     url: "/blocks",
+  });
+};
+
+// addressList
+export let addressList = () => {
+  return axios({
+    method: "get",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+    },
+    url: "/assets",
+  });
+};
+
+// transactionsList
+export let transactionsList = () => {
+  return axios({
+    method: "get",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+    },
+    url: "/txn",
+  });
+};
+
+// transactionsList
+export let getAssets = () => {
+  return axios({
+    method: "get",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+    },
+    url: "/assets",
+  });
+};
+
+// tx
+export let getTx = (data) => {
+  console.log(data);
+  return axios({
+    method: "get",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+    },
+    url: `/txn/${data}`,
   });
 };
 
@@ -117,4 +102,3 @@ export let getBlocksHeight = (height) => {
     url: `/blocks/${height}`,
   });
 };
->>>>>>> ftf
