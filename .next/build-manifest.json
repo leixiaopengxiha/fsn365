@@ -26,7 +26,7 @@
     "/_polyfills": [
       "static/runtime/polyfills.js"
     ],
-    "/assets": [
+    "/blocks/[height]": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
@@ -37,6 +37,19 @@
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
       "static/runtime/main.js"
+<<<<<<< HEAD
+=======
+    ],
+    "/next/dist/pages/_error": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/tx/[tx]": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
+>>>>>>> d7aec318b68ac6dd3218d7bd2cf557d46993b702
     ]
   }
 }
