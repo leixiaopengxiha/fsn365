@@ -71,6 +71,7 @@
   margin: 0 10px;
   color: #999f9f;
   font-size: 14px;
+  text-decoration: none;
 }
 .nav-contiar .nav-box .nav-linkbox a:hover {
   color: #3498db;
@@ -79,6 +80,7 @@
   color: #3498db;
 }
 
+<<<<<<< HEAD
 .staking {
   width: 100%;
   background: #E7EAF3;
@@ -190,6 +192,15 @@ header {
 }
 .transactionsn-contiar .maiTransactionsn .maiTransactionsn-head {
   font-size: 23px;
+=======
+.main {
+  background-color: #f8f9fa;
+}
+.main .table-box {
+  width: 82%;
+  height: 596px;
+  margin: 0 auto;
+>>>>>>> ftf
 }
 .root {
   width: '100%';
@@ -198,5 +209,14 @@ header {
 .container {
   width: 200px;
   min-height: 60vh;
+}
+.main .table-box .root .container a {
+  text-decoration: none;
+  color: #3499db;
+}
+.page-main {
+  width: 82%;
+  height: 50vh;
+  margin: 0 auto;
 }
 
