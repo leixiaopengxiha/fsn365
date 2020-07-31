@@ -22,9 +22,34 @@ import LastPageIcon from '@material-ui/icons/LastPage';
 import Bottom from "../bottom";
 
 const columns = [
-    { id: "name", label: "Asset", minWidth: 100, color: "#3499db" },
-    { id: "id", label: "Asset ID", minWidth: 100, color: "#3499db" },
-    { id: "quantity", label: "Quantity", minWidth: 170 },
+    {
+        id: "name",
+        label: "Asset",
+        minWidth: 100,
+        color: "#3499db",
+        format: (obj) => (
+            <Link href={`/assets/${obj.id}`}>
+                <a>{obj.name}</a>
+            </Link>
+        ),
+    },
+    {
+        id: "id",
+        label: "Asset ID",
+        minWidth: 100,
+        color: "#3499db",
+        format: (obj) => (
+            <Link href={`/assets/${obj.id}`}>
+                <a>{obj.id}</a>
+            </Link>
+        ),
+    },
+    {
+        id: "quantity",
+        label: "Quantity",
+        minWidth: 170,
+        format: (obj) => `${obj.quantity} ${obj.symbol}`
+    },
 ];
 
 function TablePaginationActions(props) {
@@ -142,7 +167,12 @@ export default function index() {
                                 {rows
                                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                     .map((row, index) => {
-
+                                        var obj = {
+                                            name: row.name,
+                                            id: row.id,
+                                            quantity: row.quantity,
+                                            symbol: row.symbol
+                                        };
                                         return (
                                             <TableRow
                                                 hover
@@ -159,9 +189,7 @@ export default function index() {
                                                             align="center"
                                                             style={{ color: column.color }}
                                                         >
-                                                            {column.id == "quantity"
-                                                                ? `${row[column.id]} ${row.symbol}  `
-                                                                : value}
+                                                            {column.format ? column.format(obj) : value}
                                                         </TableCell>
                                                     );
                                                 })}

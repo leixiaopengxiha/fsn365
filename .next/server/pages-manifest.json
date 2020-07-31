@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"/_app":"static/development/pages/_app.js","/_document":"static/development/pages/_document.js","/_error":"static/development/pages/_error.js","/assets":"static/development/pages/assets.js","/index":"static/development/pages/index.js","/":"static/development/pages/index.js"}
-=======
-{"/_app":"static/development/pages/_app.js","/_document":"static/development/pages/_document.js","/_error":"static/development/pages/_error.js","/blocks/[height]":"static/development/pages/blocks/[height].js","/index":"static/development/pages/index.js","/next/dist/pages/_error":"static/development/pages/next/dist/pages/_error.js","/tx/[tx]":"static/development/pages/tx/[tx].js","/":"static/development/pages/index.js"}
->>>>>>> d7aec318b68ac6dd3218d7bd2cf557d46993b702
+{"/_app":"static/development/pages/_app.js","/_document":"static/development/pages/_document.js","/_error":"static/development/pages/_error.js","/assets":"static/development/pages/assets.js","/assets/[list]":"static/development/pages/assets/[list].js"}

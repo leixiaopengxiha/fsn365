@@ -69,7 +69,7 @@ export let transactionsList = () => {
   });
 };
 
-// transactionsList
+// Assets
 export let getAssets = () => {
   return axios({
     method: "get",
@@ -102,3 +102,4 @@ export let getBlocksHeight = (height) => {
     url: `/blocks/${height}`,
   });
 };
+
